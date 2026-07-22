@@ -9,7 +9,7 @@
 :root{
   --crimson:#9E1B32;--crimson-deep:#7E1528;--navy:#2B2E7A;--midnight:#12142E;
   --ink:#1D1D1F;--ink-soft:#3D3D3F;--paper:#FFF;--parchment:#FAF8F5;--line:#DDD9D3;
-  --dawn:#FFD9C4;--focus:#1A56DB;--ok:#0E6B33;
+  --dawn:#FFD9C4;--focus:#1A56DB;--ok:#0E6B33;--flag:#B4590E;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--parchment);color:var(--ink);
@@ -38,12 +38,15 @@ header.top .wrap{padding-bottom:0}
 .pill.prod{background:#5A2E8A}.pill.ask{background:#0E5A6B}.pill.story{background:#6B4A0E}
 .post pre{margin:0;padding:1.2rem 1.2rem 1rem;white-space:pre-wrap;word-wrap:break-word;
   font-family:inherit;font-size:1rem;line-height:1.6;color:var(--ink)}
-.post-foot{padding:0 1.2rem 1.1rem}
+.post-foot{padding:0 1.2rem 1.1rem;display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
 button.copy{background:var(--crimson);color:#fff;border:0;border-radius:4px;cursor:pointer;
   font-size:1rem;font-weight:700;padding:.8rem 1.4rem;min-height:44px}
 button.copy:hover{background:var(--crimson-deep)}
 button.copy.done{background:var(--ok)}
+.flagnote{font-size:.85rem;color:var(--flag);font-weight:600}
 .note{font-size:.92rem;color:var(--ink-soft);border-left:4px solid var(--navy);background:var(--paper);padding:.85rem 1rem;max-width:68ch}
+.note.warn{border-left-color:var(--flag)}
+.note.warn strong{color:var(--flag)}
 </style>
 </head>
 <body>
@@ -58,17 +61,16 @@ button.copy.done{background:var(--ok)}
 
 <section class="strategy" aria-labelledby="strat-h">
   <h2 id="strat-h" style="margin-top:0">The strategy (read once, then just post)</h2>
-  <p>This library is built around what actually earns reach on LinkedIn in mid-2026:</p>
   <ul>
-    <li><strong>Post from your personal profile.</strong> Personal profiles reach several times more people than company pages — LinkedIn is a people network first, and it pushes human voices, opinions, and lived experience.</li>
-    <li><strong>The first two lines decide everything.</strong> Readers see ~3 lines before "…see more." Every post here opens with a hook that earns the click, because reading time (dwell time) is the strongest ranking signal there is.</li>
-    <li><strong>Value beats volume.</strong> The algorithm now reads posts for substance and rewards saves, shares, and real comments — while passive likes count for little and engagement-bait ("comment YES for the guide") gets penalized. These posts teach, observe, or ask something real.</li>
-    <li><strong>Stay on one theme.</strong> LinkedIn needs to learn what you should be known for. Every post here is wound care — supply economics, dressing changes, long-term care realities. Thirty days of topic consistency trains the algorithm to show you to wound care people.</li>
-    <li><strong>No links in the post body.</strong> Outbound links suppress reach. When a post references the NuMed site, put the link in your first comment instead.</li>
-    <li><strong>The first hour matters.</strong> Post between 7:30–9:00 AM on weekdays, then reply to every comment within the hour if you can — early conversation extends distribution, and your replies count double.</li>
-    <li><strong>Cadence:</strong> one post per day is provided. If daily feels like too much, post the weekday ones and skip weekends — consistency beats intensity. Never post twice in one day.</li>
+    <li><strong>Post from your personal profile.</strong> Personal profiles tend to reach more people than company pages — LinkedIn generally favors individual voices over branded accounts.</li>
+    <li><strong>The first two lines decide everything.</strong> Readers see roughly three lines before "…see more." Every post here opens with something worth clicking into, because how long someone actually reads is one of the signals the feed is understood to weigh most heavily.</li>
+    <li><strong>Substance over volume.</strong> Saves, shares, and real comments are generally believed to carry more weight than passive likes, and obvious engagement-bait ("comment YES for the guide") tends to get suppressed. These posts teach, observe, or ask something real — nothing here asks for a fake comment to unlock anything.</li>
+    <li><strong>Stay on one theme.</strong> Every post here sits inside wound care — supply economics, reimbursement, dressing performance, the realities of running a program. Consistency over 30 days is what trains your network to know what you're known for.</li>
+    <li><strong>No links in the post body.</strong> Posts with outbound links tend to get less reach. When a post references the NuMed site, the link goes in the first comment instead.</li>
+    <li><strong>The first hour matters.</strong> Post between 7:30–9:00 AM on weekdays, then reply to comments as they come in — early conversation is generally believed to extend how long a post keeps circulating.</li>
+    <li><strong>Cadence:</strong> one post per day is provided. If daily feels like too much, run the weekday posts and skip weekends — consistency beats intensity. Never post twice in one day. Dates are checked against the real 2026 calendar, and all four product posts (Jul 28, Aug 4, Aug 11, Aug 18) land on Tuesdays, so the weekday-only fallback still gets your strongest sales content in front of people.</li>
   </ul>
-  <p class="note"><strong>Personalize freely.</strong> Swap in your own phrasing, a real moment from your week, or a photo from a facility visit (with permission). Small personal touches outperform polished copy. Nothing here makes clinical claims beyond NuMed's product labeling — keep it that way when editing.</p>
+  <p class="note warn"><strong>Before you post — two things need your real numbers.</strong> The Aug 2 post has a bracketed <code>[X] years</code> placeholder for NuMed's actual combined tenure in healthcare/manufacturing — drop in the real figure. Several posts (Jul 28, Aug 4, Aug 18) reference PDAC-verified coding and free sample shipping without a specific turnaround time, since I didn't want to promise a number that might not match current fulfillment reality — add a timeframe back in if you can commit to one. Nothing else in this batch states a statistic, price, or code that isn't either general industry mechanics or something you can back with your own materials.</p>
 </section>
 
 <h2>The posts</h2>
@@ -78,329 +80,277 @@ button.copy.done{background:var(--ok)}
 
 <script>
 const POSTS = [
-{d:"Tue, Jul 22",t:"pov",title:"Opening move",body:`After decades in wound care sales, here's the sentence I hear most from nursing directors:
+{d:"Wed, Jul 22",t:"pov",title:"Opening move",body:`Twenty-plus years selling into wound care, and one line comes up in almost every first conversation with a new facility: "I didn't realize there was another option."
 
-"We didn't know there was another option."
+Most wound care formularies get built by accident — a product that worked under a DON three years ago, never revisited since. Nobody sits down and re-evaluates the whole shelf; it just accumulates.
 
-Not "your price is too high." Not "we're happy with our supplier." Just — nobody ever showed them the alternatives.
+My job is closing that information gap: making sure the people managing wound care budgets know the full field before their next contract renewal, not just whichever rep happened to show up first.
 
-The advanced wound care market runs on inertia. Facilities inherit their formulary like furniture. And the big brands count on that.
-
-My job this year is simple: make sure the people doing the hardest work in healthcare know what their options actually are.
-
-That's it. That's the post.
+Starting a series here on what wound care supply and reimbursement actually look like from the inside — the parts that show up on a P&L, not just a spec sheet. If you manage a program, or the budget behind one, stick around.
 
 #WoundCare #LongTermCare #NursingHomes #HealthcareSupplyChain`},
-{d:"Wed, Jul 23",t:"edu",title:"Reimbursement 101",body:`Here's something that surprises people outside the industry:
+{d:"Thu, Jul 23",t:"edu",title:"Two different economics",body:`A distinction that trips up almost everyone new to wound care finance: reimbursement works completely differently depending on where the dressing gets used.
 
-Medicare doesn't pay more for a name-brand dressing.
+In a Medicare Part A SNF stay, wound care supplies are wrapped into the facility's per diem rate under consolidated billing. There's no separate payment for the dressing itself — the facility absorbs that cost directly, out of a fixed daily rate, no matter what brand is on the box.
 
-Reimbursement for surgical dressings is set by the HCPCS code — the category — not the logo on the box. A collagen dressing and its famous-brand equivalent can bill under the same code.
+Outside that setting — physician offices, many outpatient clinics — surgical dressings can bill separately under HCPCS codes, and those codes are assigned by category: material, pad size, absorbency level. Not by brand name.
 
-So when a facility pays a premium for the brand, that premium doesn't come back in reimbursement. It comes out of margin.
-
-For a wound care program running hundreds of dressing changes a month, that difference compounds quietly, all year long.
-
-Worth checking what your program actually pays per dressing. The number surprises almost everyone who looks.
+Two different payment models, two very different pressure points on the budget. Either way, what a program pays per dressing carries more weight than most formularies give it credit for — and pinning down which situation you're actually in should come before comparing suppliers on price.
 
 #WoundCare #HCPCS #HealthcareFinance #LongTermCare #SNF`},
-{d:"Thu, Jul 24",t:"story",title:"The dressing change",body:`A wound care nurse told me something years ago that changed how I think about this business.
+{d:"Fri, Jul 24",t:"story",title:"The dressing change",body:`A wound care nurse told me something years ago I still think about: patients remember the dressing changes more clearly than they remember the wound itself.
 
-She said: "Patients don't remember the wound. They remember the changes."
+The bracing before the old dressing comes off. The pull on skin that's already fragile. The couple of minutes of dread that build up between visits.
 
-The bracing before the old dressing comes off. The adhesive on fragile skin. The dread that builds between visits.
+That's the real case for a gentle-release contact layer: what happens at the bedside twice a week for however many weeks it takes to heal, more than any line on a spec sheet.
 
-That's why gentle-release contact layers matter so much in post-acute care. Not as a spec sheet line — as the difference between a patient who cooperates with care and one who fights it.
-
-The product on the shelf shapes the experience at the bedside. Choose accordingly.
+The product on the cart shapes the experience in the room. That's easy to lose sight of when a formulary decision comes down to a number on a spreadsheet.
 
 #WoundCare #NursingHomes #PatientExperience #WoundCareNurse`},
-{d:"Fri, Jul 25",t:"ask",title:"Question to the room",body:`Honest question for the wound care clinicians and DONs in my network:
+{d:"Sat, Jul 25",t:"ask",title:"Question to the room",body:`Honest question for the wound care clinicians and DONs in my network:
 
-When your facility last changed dressing suppliers — what actually drove the decision?
+When your facility last switched dressing suppliers, what actually forced the decision?
 
-A) Price
+A) Cost pressure from finance
 B) A clinical problem with the old product
-C) A rep who showed up and made it easy
-D) A recommendation from someone you trust
+C) A documentation or coding issue that led to denials
+D) A rep who made the whole switch painless
 
-I have my guess from 20+ years of watching it happen, but I'd rather hear yours. The answers usually say more about our industry than any market report.
+I have a guess based on two decades of watching these decisions get made, but I'd rather hear it from people living it. The pattern usually says more about this industry than any market report does.
 
 #WoundCare #LongTermCare #MedicalSales #HealthcareProcurement`},
-{d:"Sat, Jul 26",t:"edu",title:"Weekend explainer",body:`Weekend explainer: why do some dressings turn into gel?
+{d:"Sun, Jul 26",t:"edu",title:"Weekend explainer",body:`Weekend explainer: why do some dressings turn into a soft gel once they're on the wound?
 
-Certain absorbent dressings are designed to transform into a soft gel when they contact wound fluid. That's not a defect — it's the mechanism.
+That's the mechanism working as intended. Certain absorbent dressings are designed to interact with wound fluid and transition into a gel-like consistency that helps maintain a moist healing environment.
 
-A moist wound environment supports the body's own healing processes: granulation (new tissue forming) and epithelialization (skin closing over). Too dry, and healing slows. Too wet, and surrounding skin breaks down.
+Moisture balance matters because it affects two processes directly: granulation, where new tissue fills in, and epithelialization, where skin closes back over the surface. Too dry slows both down. Too wet macerates the skin around the wound.
 
-Good exudate management is a balancing act, and the dressing does the balancing between visits.
-
-Small piece of materials science, big difference in outcomes.
+Good exudate management is really the dressing doing that balancing act in the days between clinician visits — which, for a chronic wound, is most of the healing timeline.
 
 #WoundCare #WoundHealing #NurseEducation #ClinicalEducation`},
-{d:"Sun, Jul 27",t:"pov",title:"Sunday reflection",body:`65 years.
+{d:"Mon, Jul 27",t:"pov",title:"Sunday reflection",body:`[X] years is how long the people behind NuMed have worked in healthcare and manufacturing combined — long enough to watch this market consolidate hard, with brand premiums stacking up and smaller facilities getting priced out of products their own patients need.
 
-That's how long the people behind NuMed have been in healthcare and industry. Long enough to watch the wound care market consolidate, premiumize, and price small facilities out of the products their patients need.
+Our approach hasn't changed much in that time: build solid products, price them honestly, and answer the phone when a customer has a problem with either one.
 
-Our answer has never been complicated: make quality products, price them honestly, answer the phone when customers call.
-
-Old-fashioned? Maybe. But I've watched a lot of flashier strategies come and go.
+Simple to say. Harder to keep doing once a company scales — which is probably the real test.
 
 #WoundCare #FamilyBusiness #HealthcareValues #MadeToLast`},
-{d:"Mon, Jul 28",t:"prod",title:"Silver Collagen intro",body:`We launched something I've been waiting years to sell.
+{d:"Tue, Jul 28",t:"prod",title:"Silver Collagen intro",body:`New product I've been waiting to get in front of people.
 
-The NuMed Silver Collagen Dressing: 100% bovine Type I collagen with silver ions for sustained antimicrobial protection — the dual-action combination that usually sells at premium-matrix prices, often north of $15 a dressing.
+NuMed's Silver Collagen Dressing combines bovine Type I collagen with silver ions for sustained antimicrobial protection — a combination that, in this category, usually comes with a premium price tag attached to the brand name on the box, not just the materials inside it.
 
-Ours doesn't.
+Ours is priced against the materials, not the logo. FDA-cleared, coded and PDAC-verified for reimbursement under the standard surgical dressing category. Built for moderate-to-heavily draining wounds, leg ulcers, and partial-to-full-thickness burns.
 
-FDA-cleared. Reimbursement-eligible under HCPCS A6021. Built for moderate-to-heavily draining wounds, leg ulcers, and partial to full-thickness burns.
+If your program currently uses a collagen or silver product, I'll send evaluation samples so your clinicians can judge it the way that actually matters — on the patient in front of them.
 
-If your program uses collagen or silver products, I'll happily send evaluation samples so your clinicians can judge it where it counts — at the bedside.
-
-Link to details in the comments.
+Details in the comments.
 
 #WoundCare #Collagen #SilverDressing #WoundHealing #NewProduct`},
-{d:"Tue, Jul 29",t:"edu",title:"Cost-center thinking",body:`A mental model that changed how I talk to wound care buyers:
+{d:"Wed, Jul 29",t:"edu",title:"Cost-center thinking",body:`A framing that changes how a lot of wound care buyers think about supply costs:
 
-For a hospital selling a procedure, supplies are a rounding error.
-For a wound care program billing by the visit or the episode, supplies are margin.
+In a hospital billing for a procedure, dressings are a rounding error against the total charge. In a SNF operating under Part A consolidated billing, or a wound care program managing its own margin per visit, the dressing is a direct hit to what's left over at the end of the month.
 
-Same dressing. Completely different economics.
+One product category, two completely different levels of financial exposure, depending entirely on the payment model underneath it.
 
-That's why multi-site wound care groups and LTC programs are often the sharpest supply buyers in healthcare — every dollar saved per dressing multiplies across every site, every patient, every month.
+That's why multi-site wound care groups and long-term care operators tend to be some of the sharpest supply buyers in healthcare — every dollar per dressing multiplies across every site, every resident, every month, with no separate reimbursement to soften it.
 
-If dressings are a cost center in your business, you should be re-quoting your supply costs at least annually. The market has moved.
+If dressings function as a cost center in your business, put the formulary back out for bid at least once a year. Contracts tend to age slower than the market underneath them.
 
 #WoundCare #HealthcareFinance #LongTermCare #SupplyChain`},
-{d:"Wed, Jul 30",t:"story",title:"The supply room",body:`You can learn everything about a facility's wound care program from its supply room.
+{d:"Thu, Jul 30",t:"story",title:"The supply room",body:`You can learn a lot about a facility's wound care program just by opening its supply room.
 
-I've seen supply rooms with eleven kinds of the same dressing category — because three DONs across eight years each added their favorite and nobody ever consolidated.
+I've walked into rooms stocked with several different versions of the same dressing category, because product decisions accumulated over years of different DONs and nobody ever went back to consolidate.
 
-Every redundant SKU is money sitting on a shelf, staff confusion at 2 AM, and a reorder process nobody fully understands.
+Every redundant SKU is money sitting on a shelf, confusion for whoever's on the overnight shift, and a reorder process that only one person fully understands.
 
-Consolidation isn't glamorous. But standardizing on fewer, better, fairly-priced products is one of the fastest wins available to any wound care program.
-
-Sometimes the best clinical decision is an inventory decision.
+Consolidation isn't glamorous work. But standardizing on fewer, better-priced products is one of the fastest, lowest-risk wins available to most wound care programs — and it doesn't require changing a single clinical protocol to get started.
 
 #WoundCare #NursingHomes #SNF #HealthcareOperations`},
-{d:"Thu, Jul 31",t:"ask",title:"DON question",body:`Directors of Nursing — a question I genuinely want answered:
+{d:"Fri, Jul 31",t:"ask",title:"DON question",body:`Directors of Nursing — genuinely curious about this one:
 
-How much of your week goes to wound care documentation and supply headaches, versus actual clinical oversight?
+How much of your week goes to wound care documentation and supply management, versus actual clinical oversight of your team?
 
-Every DON I ask laughs first. Then gives me a number that should worry everyone in this industry.
+Every DON I've asked has a strong reaction to that question, and it's rarely a relaxed one.
 
-The vendors who win the next decade in long-term care won't just ship boxes. They'll give your team time back.
+The vendors that matter most in long-term care over the next few years won't just be the ones shipping boxes on time. They'll be the ones who hand your team back some of that time — through simpler ordering, better in-service materials, or a formulary that doesn't need three products to do one job.
 
-What would help most: simpler ordering, better staff training materials, or fewer products to manage?
+If you could hand one of those tasks to somebody else tomorrow, which one goes first — and why hasn't a vendor built that for you yet?
 
 #DirectorOfNursing #LongTermCare #WoundCare #NursingLeadership`},
-{d:"Fri, Aug 1",t:"edu",title:"Silicone explainer",body:`Why don't silicone dressings hurt coming off?
+{d:"Sat, Aug 1",t:"edu",title:"Silicone explainer",body:`Why doesn't a silicone dressing hurt as much coming off?
 
-Traditional adhesives grip by flowing into every microscopic crevice of skin — and they don't let go politely. On fragile or aging skin, removal can strip the top layer along with the dressing.
+Traditional adhesives bond by flowing into every microscopic crevice in the skin, and they don't release cleanly. On fragile or aging skin, removal can strip the outer layer right along with the dressing — clinicians have a name for it: medical adhesive-related skin injury.
 
-Soft silicone contact layers work differently. They conform closely enough to seal, but release without tearing at skin or disturbing the wound bed. Clinicians call the damage they prevent "second trauma."
+Soft silicone contact layers work differently. They conform enough to stay in place and manage exudate, but release without tearing at the skin or disturbing the wound bed underneath.
 
-For post-op wounds and elderly patients, that difference isn't comfort — it's protecting the healing you already paid for.
+For post-op patients and elderly residents, that difference protects healing that's already been paid for, every single time the dressing gets changed.
 
-This is the product category I'd put NuMed against anyone on. Anyone.
+This is the product category where I'd put NuMed's silicone line up against anyone.
 
 #WoundCare #SiliconeDressing #PostOp #GeriatricCare #WoundCareNurse`},
-{d:"Sat, Aug 2",t:"pov",title:"Small manufacturer POV",body:`Unpopular opinion from 20+ years in medical sales:
+{d:"Sun, Aug 2",t:"pov",title:"Small manufacturer POV",body:`An opinion from two decades in medical sales that doesn't always land with people outside the industry: smaller manufacturers tend to be the safer bet on service, even when they're the newer name on the shelf.
 
-Small manufacturers aren't the risky choice in wound care. They're often the safer one.
+At a company the size of a national supplier, a mid-size facility is one line item in a much bigger book of business. At a company our size, that facility is a relationship the business depends on — the call gets answered, the feedback reaches someone who can act on it, and a problem with an order gets treated like the emergency it actually is.
 
-When you buy from a giant, you're a line item. When you buy from a company our size, you're a relationship the whole business depends on. Your call gets answered. Your feedback reaches the people who can act on it. Your problem is our emergency.
-
-Scale has advantages. Accountability isn't one of them.
+Scale buys plenty of things. It doesn't automatically buy someone picking up the phone on a bad day — that has to be built in on purpose, and it tends to show up fastest at a company that can't afford to lose you.
 
 #WoundCare #SmallBusiness #HealthcareSupplyChain #B2B`},
-{d:"Sun, Aug 3",t:"edu",title:"Wound types primer",body:`Quick primer for the non-clinical folks in my network who ask what "advanced wound care" actually covers:
+{d:"Mon, Aug 3",t:"edu",title:"Wound types primer",body:`A quick primer for people in my network who aren't clinical but keep asking what "advanced wound care" actually covers:
 
-Pressure ulcers — from sustained pressure, common in immobile patients.
-Diabetic foot ulcers — slow-healing, high amputation risk, enormous quality-of-life stakes.
-Venous leg ulcers — from poor circulation, often chronic.
-Surgical wounds — including ones that reopen (dehisce).
+Pressure injuries — from sustained pressure on skin and tissue, common in patients with limited mobility, and the category that shows up most directly in facility quality measures.
+Diabetic foot ulcers — slow to heal, high risk of amputation, and among the most costly wound types to manage over time.
+Venous leg ulcers — driven by poor circulation, often chronic and recurring.
+Surgical wounds — including wounds that reopen after closure, known as dehiscence.
 
-Different wounds, different exudate levels, different dressings. Matching the product to the wound is half the clinical craft.
-
-The other half is having the right products within reach when it matters.
+Different wound types produce different exudate levels and need different dressings, which is exactly where formulary decisions start to matter, both clinically and financially.
 
 #WoundCare #HealthcareEducation #DiabeticFootUlcer #PressureUlcer`},
-{d:"Mon, Aug 4",t:"prod",title:"Sample offer",body:`A standing offer, no strings:
+{d:"Tue, Aug 4",t:"prod",title:"Sample offer",body:`A standing offer, no catch attached:
 
-If you run wound care for a facility, clinic, or multi-site group, I'll ship you evaluation samples of NuMed dressings matched to your care setting — free, within 48 hours of your request.
+If you manage wound care for a facility, clinic, or multi-site group, I'll send evaluation samples matched to your care setting. No purchase order, no card on file, no automated follow-up sequence — just samples and a direct line to me for clinical or pricing questions.
 
-No obligation. No card. No follow-up sequence. One human (me) who'll answer clinical and pricing questions directly.
+Every product ships FDA approved and/or cleared, coded and PDAC-verified for reimbursement. Compare them against whatever's on your cart right now.
 
-Products are FDA approved and/or cleared, with HCPCS codes assigned by PDAC. Judge them at the bedside, against whatever you use now.
-
-Message me or comment below and I'll take it from there.
+Comment below or message me and I'll get it moving.
 
 #WoundCare #FreeSamples #LongTermCare #Podiatry #WoundClinic`},
-{d:"Tue, Aug 5",t:"story",title:"Podiatry respect",body:`Podiatrists don't get enough credit for what they actually do.
+{d:"Wed, Aug 5",t:"story",title:"Podiatry respect",body:`Podiatrists don't get enough credit for what they actually manage day to day.
 
-A diabetic foot ulcer that heals is a limb saved, a family spared, and — nobody likes saying this part out loud — six figures of downstream cost avoided.
+A diabetic foot ulcer that heals instead of progressing is a limb saved and a family spared a genuinely life-altering outcome — and it also avoids a downstream cost to the healthcare system that dwarfs anything spent preventing it in the first place.
 
-The podiatrists I work with are running against a clock most of medicine never sees. Debride, offload, dress, repeat. Week after week, against biology that fights back.
+The podiatrists I work with are running against a clock most of medicine doesn't see: debride, offload, dress, document, repeat, week after week, against biology that isn't cooperating.
 
-If you're in that fight: the supply side of this industry owes you better products at fairer prices. Some of us are working on it.
+If that's your world, the supply side of this industry owes you better products at honest prices. Some of us are trying to build that.
 
 #Podiatry #DiabeticFootUlcer #LimbSalvage #WoundCare`},
-{d:"Wed, Aug 6",t:"edu",title:"The switching myth",body:`"Switching suppliers is a nightmare."
+{d:"Thu, Aug 6",t:"edu",title:"The switching myth",body:`"Switching dressing suppliers is a nightmare" is something I hear constantly, and it used to be more true than it is now.
 
-I hear it constantly. And it used to be true.
+Look at what a real switch actually requires: a crosswalk from your old SKUs to the new ones, staff familiarization on the new products, updated order sheets, and a trial period under your own protocols. That's project work measured in weeks, not quarters, when the new supplier is doing the heavy lifting instead of leaving it to you.
 
-But look at what switching actually requires: a product crosswalk (old SKU → new SKU), staff familiarization, updated order sheets, and a trial period. That's a project measured in weeks, not quarters — when the new supplier does the heavy lifting.
-
-The suppliers worth switching to build the crosswalk for you, provide the in-service materials, and support the trial.
-
-If a vendor quotes you a great price and hands you the transition work — that price isn't real.
+So here's a useful filter: if a vendor quotes an attractive price and then hands you the entire transition project to execute yourself, ask whether that price is really the deal it looks like on paper.
 
 #WoundCare #HealthcareProcurement #ChangeManagement #LongTermCare`},
-{d:"Thu, Aug 7",t:"ask",title:"Rep relationship question",body:`Question for clinicians and administrators:
+{d:"Fri, Aug 7",t:"ask",title:"Rep relationship question",body:`Question for the clinicians and administrators here: what's the best thing a medical supply rep ever actually did for you — past the free lunch, something that made your job easier or your patients better off?
 
-What's the single best thing a medical supply rep ever did for you?
+I ask because I think the honest answers describe what this job should look like: probably small, practical things — a crosswalk built overnight, a sample that showed up before the next shift, a straight answer about where a product falls short.
 
-Not the free lunch. The thing that actually made your work easier or your patients better off.
-
-I ask because I think the answers define what this job should be — and I suspect the winning answers are small, practical things: the crosswalk built overnight, the sample that arrived in two days, the straight answer about a product's limits.
-
-Teach me something. What made a rep unforgettable?
+Tell me what made a rep worth remembering.
 
 #MedicalSales #WoundCare #HealthcareRelationships #B2B`},
-{d:"Fri, Aug 8",t:"edu",title:"Exudate matching",body:`The most common dressing mistake I see isn't brand choice. It's absorbency mismatch.
+{d:"Sat, Aug 8",t:"edu",title:"Exudate matching",body:`The most expensive dressing mistake I see in the field usually isn't brand choice. It's absorbency mismatch.
 
-A heavily draining wound in a light dressing means constant changes, macerated skin, and frustrated staff.
-A dry wound in a super-absorbent dressing means the dressing competes with the wound for moisture.
+A heavily draining wound in a dressing that's too light means constant changes, macerated skin around the wound, and a nursing staff redoing work that shouldn't need redoing. A dry wound in a super-absorbent dressing means the dressing is pulling moisture the wound actually needs.
 
-The label tells you the intended exudate level. Matching it is free — and it's often the highest-impact "product decision" a program can make without spending a dollar more.
-
-Sometimes better wound care is just reading the box more carefully.
+The label already tells you the intended exudate range. Matching it costs nothing extra, and it's often the single highest-impact decision a program can make without spending another dollar on new products — it just takes someone reading the box carefully.
 
 #WoundCare #ClinicalEducation #NurseEducation #WoundHealing`},
-{d:"Sat, Aug 9",t:"pov",title:"Price transparency",body:`Wound care pricing is one of healthcare's quietest information games.
+{d:"Sun, Aug 9",t:"pov",title:"Price transparency",body:`Wound care pricing might be one of the quietest information gaps in healthcare.
 
-The same category of dressing can vary several-fold in price depending on brand, channel, and who's asking. Most buyers never see the spread, because comparing requires data nobody hands out freely.
+The same dressing category can vary widely in price depending on brand, distribution channel, and who's doing the negotiating — and most buyers never see that spread, because getting real comparison data usually means asking a rep who has every incentive not to volunteer it.
 
-I think the manufacturers who win the next decade will be the ones who publish their numbers and let the math argue.
+My bet is that the manufacturers who do well over the next decade are the ones willing to publish real numbers and let a side-by-side comparison make the case.
 
-Transparency is a strategy. It just requires a product that survives comparison.
-
-Ours does.
+That bet only pays off if the product can actually survive a side-by-side comparison — which is exactly the test I'd invite anyone to run against ours.
 
 #WoundCare #PriceTransparency #HealthcareCosts #B2B`},
-{d:"Sun, Aug 10",t:"story",title:"Why I do this",body:`People ask why I've stayed in wound care supply this long.
+{d:"Mon, Aug 10",t:"story",title:"Why I do this",body:`People ask why I've stayed in wound care supply this long — twenty-plus years now.
 
-Here's the honest answer: it's one of the few corners of healthcare where the supply chain decision and the patient outcome sit this close together.
+The honest answer: it's one of the few corners of healthcare where a supply decision and a patient outcome sit close enough together that you can actually see the connection. The dressing that's stocked, chosen, and used correctly changes how a wound heals and how a patient experiences getting there.
 
-The right dressing, stocked and used, changes how a wound heals and how a patient experiences care. I've watched it for two decades.
+I've also watched how much of that decision gets made on autopilot — reordered because it's what's always been ordered, not because anyone checked whether it's still the right call or the right price.
 
-Selling something that matters at a price that's fair — that's not a bad way to spend a career.
+Selling something that matters, at a price that holds up to scrutiny, has turned out to be a reasonable way to spend a career. Back at it tomorrow.
 
-Back at it Monday.
+#WoundCare #HealthcareCareers #MedicalSales`},
+{d:"Tue, Aug 11",t:"prod",title:"Silicone flagship",body:`If I could show a new prospect exactly one NuMed product, it's this one.
 
-#WoundCare #HealthcareCareers #Purpose #MedicalSales`},
-{d:"Mon, Aug 11",t:"prod",title:"Silicone flagship",body:`If I could only show a new customer one NuMed product, it's this one.
+The Bordered Silicone Absorbent Dressing: a gentle, hypoallergenic silicone contact layer that won't stick to the wound bed or sutures, paired with a wicking layer, a high-absorbency pad, and a waterproof, vapor-permeable film. Built for moderate-to-heavily exuding wounds — leg ulcers, pressure injuries, diabetic foot ulcers, dehisced surgical wounds, donor sites.
 
-Our Bordered Silicone Absorbent Dressing: a gentle, hypoallergenic silicone contact layer that doesn't stick to the wound or sutures, a wicking layer, a highly absorbent pad, and a waterproof, vapor-permeable film. Built for moderate-to-heavily exuding wounds — leg ulcers, pressure ulcers, diabetic foot ulcers, dehisced surgical wounds, donor sites.
+Clinicians can lift the border, check the wound, and reseat it in one motion — no full dressing change required just to look.
 
-Clinicians can lift it, inspect the wound, and reseat it in one move.
-
-This is the category where our value story isn't close. Evaluation samples are free — message me.
+This is the category where I'm confident putting our pricing next to anyone's. Evaluation samples are free — message me and I'll get them out to you.
 
 #WoundCare #SiliconeDressing #PressureUlcer #DiabeticFootUlcer #PostOp`},
-{d:"Tue, Aug 12",t:"edu",title:"Star ratings connection",body:`For nursing homes, wound care isn't just clinical — it's reputational.
+{d:"Wed, Aug 12",t:"edu",title:"Star ratings connection",body:`For nursing homes, wound care isn't only a clinical concern. It's a public one.
 
-Pressure ulcer rates feed directly into quality measures, survey outcomes, and the star ratings families check before choosing a facility.
+Pressure ulcer incidence is one of the quality measures that feeds directly into a facility's CMS Five-Star Rating — the same rating families check when they're choosing where to place a parent or spouse.
 
-Which means a facility's dressing formulary, staff training, and documentation practices are quietly load-bearing for its public standing.
+Which means a facility's dressing formulary, staff training on prevention, and documentation practices are quietly connected to something well outside the clinical chart: its reputation, and over time, its census.
 
-The operators who treat wound care as a quality-measures strategy — not a supply-closet afterthought — are the ones whose ratings show it.
+The operators treating wound care as a quality-measures strategy, not a supply-closet afterthought, tend to be the ones whose ratings show it.
 
 #NursingHomes #QualityMeasures #FiveStarRating #WoundCare #LTC`},
-{d:"Wed, Aug 13",t:"ask",title:"Training gap question",body:`For the wound care nurses in my network:
+{d:"Thu, Aug 13",t:"ask",title:"Training gap question",body:`For the wound care nurses here: when new staff join your facility, how do they actually learn dressing selection and application? Formal training, or mostly picking it up from whoever's on shift?
 
-When new staff join your facility, how do they actually learn dressing selection and application — formal training, or watching whoever's on shift?
+Most answers I get lean toward the second one, and that's not really a knock on any individual facility. It's a gap the supply side should be helping close. A vendor that ships a product without also shipping the training material to go with it is only doing half the job.
 
-Every honest answer I've gotten is some version of "mostly the second one."
-
-That's not a criticism of facilities — it's a gap the supply side should be filling. Vendors send products; they should be sending in-service materials with them, every time.
-
-What training support do you wish your suppliers provided?
+What training support do you wish your suppliers actually provided?
 
 #WoundCareNurse #NurseEducation #LongTermCare #ClinicalTraining`},
-{d:"Thu, Aug 14",t:"edu",title:"Collagen science",body:`Why collagen in wound care? A one-minute version:
+{d:"Fri, Aug 14",t:"edu",title:"Collagen science",body:`Why collagen shows up in wound dressings, in about a minute:
 
-Collagen is the structural protein wounds rebuild with. Chronic wounds often stall because the wound environment breaks down collagen faster than the body can replace it.
+Collagen is the structural protein a wound rebuilds with. Chronic wounds often stall because the wound environment is breaking collagen down faster than the body can replace it — enzymes that are normally part of tissue remodeling get overactive and outpace repair.
 
-A collagen dressing gives that process raw material and a scaffold — attracting the cellular components tissue growth needs, and giving destructive enzymes something to act on besides the patient's own new tissue.
+A collagen dressing gives that process two things: raw material to work with, and a scaffold that supports new tissue formation, while also giving those destructive enzymes something else to act on besides the patient's own healing tissue.
 
-It's one of the most elegant ideas in dressing design: don't just cover the wound. Feed the repair.
+It's a genuinely elegant piece of dressing design — feeding the repair process instead of just covering the wound and waiting.
 
 #WoundCare #Collagen #WoundHealing #ClinicalEducation`},
-{d:"Fri, Aug 15",t:"pov",title:"The loyalty question",body:`Brand loyalty in medical supplies is a strange thing.
+{d:"Sat, Aug 15",t:"pov",title:"The loyalty question",body:`Brand loyalty in medical supplies is a strange thing to watch up close.
 
-Clinicians will defend a dressing brand for years — and when I ask why, the honest answer is usually "it's what we've always used."
+Clinicians will defend a specific dressing brand for years, and when I ask why, the honest answer is usually some version of "it's what we've always used." That's worth something real — trained staff, predictable behavior, no surprises mid-shift. I don't dismiss it.
 
-Familiarity is worth something real: trained staff, known behavior, no surprises. I never dismiss it.
-
-But familiarity has a price, and it's worth knowing what you're paying for it. If the answer is 30–40% per dressing, the question isn't loyalty. It's whether anyone ever ran the comparison.
-
-Run the comparison.
+But familiarity has a price tag, and most programs have never actually run the comparison to see what that number is. If your team hasn't priced out the category-equivalent option in the last year, that's the first thing I'd check before renewing anything.
 
 #WoundCare #HealthcareProcurement #BrandLoyalty #ValueAnalysis`},
-{d:"Sat, Aug 16",t:"edu",title:"Weekend vocabulary",body:`Weekend wound care vocabulary, for the curious:
+{d:"Sun, Aug 16",t:"edu",title:"Weekend vocabulary",body:`Weekend vocabulary for the wound care–curious:
 
-Exudate — the fluid a wound produces. Volume and character guide dressing choice.
-Granulation — new connective tissue forming in a healing wound. The good stuff.
-Epithelialization — skin cells closing over the surface. The finish line.
-Maceration — skin breakdown from excess moisture. What good exudate management prevents.
-Debridement — removing dead tissue so healing can proceed.
+Exudate — the fluid a wound produces; its volume and character guide dressing choice.
+Granulation — new connective tissue filling in a healing wound bed.
+Epithelialization — new skin cells closing over the surface, the last stage before full closure.
+Maceration — skin breakdown from too much moisture, one of the most common preventable complications.
+Debridement — removing dead or non-viable tissue so healing tissue can take over.
 
-Five words that describe most of what a dressing is asked to do.
+Five terms that cover most of what a dressing is actually being asked to do.
 
 #WoundCare #HealthcareEducation #NurseEducation #MedicalTerminology`},
-{d:"Sun, Aug 17",t:"story",title:"The unsung buyer",body:`Here's a person who never gets a LinkedIn post: the facility supply coordinator.
+{d:"Mon, Aug 17",t:"story",title:"The unsung buyer",body:`There's a role that never gets its own LinkedIn post: the facility supply coordinator.
 
-Not clinical. Not executive. Just the person who knows every SKU, catches every backorder before it becomes a crisis, and quietly keeps the treatment carts stocked so nurses never have to improvise.
+They're the person who knows every SKU on the shelf, catches a backorder before it turns into a 6 AM crisis, and keeps the treatment carts stocked so nobody on the floor has to improvise mid-shift.
 
-I've worked with hundreds of them. The good ones save their facilities more money than most consultants — and nobody puts them on a slide.
+I've worked with a lot of them over the years. The good ones save their facilities real money that never shows up on anyone's slide deck, because nobody tracks the crisis that didn't happen.
 
-If that's you: the industry sees you. Well — I do, anyway.
+If that's your job: it doesn't go unnoticed on this side of the phone.
 
 #HealthcareOperations #SupplyChain #LongTermCare #Appreciation`},
-{d:"Mon, Aug 18",t:"prod",title:"How evaluation works",body:`How a NuMed product evaluation actually works, start to finish:
+{d:"Tue, Aug 18",t:"prod",title:"How evaluation works",body:`How a NuMed evaluation actually works, start to finish:
 
-1. You tell us your care setting, current products, and rough monthly volume. Takes two minutes.
-2. We ship evaluation samples matched to your setting — free, within 48 hours.
-3. Your clinicians trial them under your own protocols. We include a comparison of your current products to their NuMed equivalents, with the price difference shown.
-4. A person follows up. Questions get straight answers, including "it's not a fit."
+1. Tell us your care setting, current products, and rough monthly volume — takes about two minutes.
+2. We ship evaluation samples matched to your setting, at no cost.
+3. Your clinicians trial them under your own protocols. We'll include a side-by-side comparison of your current products against their NuMed equivalents, with pricing shown plainly.
+4. A real person follows up — straight answers to whatever comes up, including if it turns out not to be a fit.
 
-No gate, no obligation, no sequence. The product either earns its place on your shelf or it doesn't.
+No gate, no obligation, no drip sequence. The product earns its place on your shelf or it doesn't.
 
-Message me to start.
+Message me to get started.
 
 #WoundCare #ProductEvaluation #LongTermCare #Podiatry #WoundClinic`},
-{d:"Tue, Aug 19",t:"pov",title:"Industry prediction",body:`A prediction about wound care supply over the next five years:
+{d:"Wed, Aug 19",t:"pov",title:"Industry prediction",body:`A prediction about wound care supply over the next several years: the middle of this market keeps shrinking.
 
-The middle disappears.
+On one side, premium brands defending price with evidence libraries, hospital contracts, and decades of formulary inertia. On the other, value manufacturers proving category-equivalent performance at honest prices, with the reimbursement structure doing a lot of that argument for them.
 
-On one side: premium brands defending price with evidence libraries and hospital contracts. On the other: value manufacturers proving category-equivalent quality at honest prices, with reimbursement doing the math for them.
+The squeezed middle — premium pricing without the evidence or the relationship to justify it — is the segment most likely to get consolidated or replaced first.
 
-The squeezed middle — premium prices without premium proof — gets consolidated or replaced.
-
-Cost pressure in post-acute care isn't a cycle. It's the new terrain. Buy accordingly.
+Cost pressure in post-acute care looks a lot more like the new terrain than a temporary cycle at this point — and a fair number of supply strategies still reflect assumptions from five years ago.
 
 #WoundCare #HealthcareTrends #PostAcuteCare #SupplyChain #Predictions`},
-{d:"Wed, Aug 20",t:"ask",title:"Closing the loop",body:`Thirty days ago I started posting here daily about wound care — the economics, the products, the people.
+{d:"Thu, Aug 20",t:"ask",title:"Closing the loop",body:`Thirty days ago I started posting here daily about wound care — the economics, the products, the people actually doing the work.
 
-What I've learned from your comments and messages: this industry is full of people who care intensely and are tired of being priced like they don't.
+What came through clearly in the comments and messages: this is an industry full of people who care intensely about their patients and are tired of being treated like price is the only thing that matters to them.
 
-So, closing question for the month:
+Closing question for the month: if you could change one thing about how wound care supplies reach your facility — price, documentation burden, training, ordering, anything — what would it be?
 
-If you could change ONE thing about how wound care supplies reach your facility — price, service, training, ordering, anything — what would it be?
-
-I read every answer. Some of them will change what we build next.
+I read everything that comes in. Some of it is going to shape what we build next.
 
 #WoundCare #LongTermCare #HealthcareCommunity #ListeningTour`}
 ];
@@ -410,11 +360,14 @@ const container = document.getElementById("posts");
 POSTS.forEach((p,i)=>{
   const art=document.createElement("article");
   art.className="post";
+  const hasFlag = p.body.includes("[X]");
   art.innerHTML =
     '<div class="post-head"><span class="meta">Day '+(i+1)+' — '+p.d+'</span>'+
     '<span class="pill '+p.t+'">'+TYPE_LABEL[p.t]+'</span></div>'+
     '<pre id="body-'+i+'"></pre>'+
-    '<div class="post-foot"><button class="copy" data-i="'+i+'" aria-label="Copy post for '+p.d+'">Copy this post</button></div>';
+    '<div class="post-foot"><button class="copy" data-i="'+i+'" aria-label="Copy post for '+p.d+'">Copy this post</button>'+
+    (hasFlag ? '<span class="flagnote">⚠ contains a placeholder — fill in before posting</span>' : '')+
+    '</div>';
   container.appendChild(art);
   art.querySelector("#body-"+i).textContent = p.body;
 });
